@@ -1,9 +1,9 @@
-const userRepository = require('../repositories/User');
+const userService = require('../service/UserService');
 const jwt = require("jsonwebtoken")
 
 const authenticate = async (username, password) => {
   // Busca o usuário no banco pelo username
-  const user = await userRepository.findByUsername(username);
+  const user = await userService.getUserByUsername(username);
   if (!user) {
     throw new Error('Usuário não encontrado.');
   } 
