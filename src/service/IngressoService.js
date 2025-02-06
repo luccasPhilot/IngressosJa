@@ -1,6 +1,9 @@
 const Ingresso = require("../models/Ingressos");
 
-const createIngresso = async (dataIngreso) => {
+const createIngresso = async (dataIngreso, userTipo) => {
+    if (userTipo !== 'admin') {
+        throw new Error('Apenas administradores podem criar Ingressos.');
+    }
     try {
         const ingresso = new Ingresso(dataIngreso);
         await ingresso.save();
@@ -20,13 +23,16 @@ const getIngressos = async () => {
 
 const getIngressoById = async (id) => {
     try {
-        return await Ingresso.findOne({_id: id});
+        return await Ingresso.findOne({ _id: id });
     } catch {
         throw new Error("Erro ao buscar Ingresso: " + error.message);
     }
 }
 
-const updateIngresso = async (id, data) => {
+const updateIngresso = async (id, data, userTipo) => {
+    if (userTipo !== 'admin') {
+        throw new Error('Apenas administradores podem criar Ingressos.');
+    }
     try {
         return await Ingresso.findByIdAndUpdate(id, data, { new: true });
     } catch (error) {

@@ -2,7 +2,7 @@ const ingressoService = require("../service/IngressoService");
 
 const createIngresso = async (req, res) => {
     try {
-        const ingresso = await ingressoService.createIngresso(req.body);
+        const ingresso = await ingressoService.createIngresso(req.body, req.userTipo);
         res.status(201).json(ingresso);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -32,7 +32,7 @@ const getIngressoById = async (req, res) => {
 
 const updateIngresso = async (req, res) => {
     try {
-        const ingresso = await ingressoService.updateIngresso(req.params.id, req.body);
+        const ingresso = await ingressoService.updateIngresso(req.params.id, req.body, req.userTipo);
 
         if (!ingresso) {
             return res.status(404).json({ message: "Ingresso não encontrado" });

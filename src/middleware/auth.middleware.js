@@ -23,6 +23,7 @@ const authMiddleware = (req, res, next) => {
             if (!user) return res.status(404).send({ message: "Usuário não encontrado" });
             
             req.userId = user.username;
+            req.userTipo = user.tipo;
 
             return next();
         });
