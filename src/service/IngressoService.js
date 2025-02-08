@@ -29,6 +29,14 @@ const getIngressoById = async (id) => {
     }
 }
 
+const getIngressoByNome = async (nome) => {
+    try {
+        return await Ingresso.findOne({ nome: nome });
+    } catch {
+        throw new Error("Erro ao buscar Ingresso: " + error.message);
+    }
+}
+
 const updateIngresso = async (id, data, userTipo) => {
     if (userTipo !== 'admin') {
         throw new Error('Apenas administradores podem criar Ingressos.');
@@ -54,4 +62,5 @@ module.exports = {
     getIngressoById,
     updateIngresso,
     deleteIngresso,
+    getIngressoByNome
 };

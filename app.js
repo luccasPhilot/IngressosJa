@@ -5,7 +5,7 @@ const cors = require('cors');
 const authUser = require("./src/routes/Auth.routes")
 const User = require("./src/routes/Users.routes")
 const ingresso = require("./src/routes/Ingressos.routes")
-// const vendas = require("./src/routes/Vendas.routes")
+const vendas = require("./src/routes/Vendas.routes")
 
 const app = express();
 app.use(cors());
@@ -37,4 +37,4 @@ async function main() {
 app.use("/Auth", authUser)
 app.use("/Users", User)
 app.use("/Ingressos", ingresso)
-// app.use("/Vendas", vendas)
+app.use("/Vendas", vendas)
