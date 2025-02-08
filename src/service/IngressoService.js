@@ -39,7 +39,7 @@ const getIngressoByNome = async (nome) => {
 
 const updateIngresso = async (id, data, userTipo) => {
     if (userTipo !== 'admin') {
-        throw new Error('Apenas administradores podem criar Ingressos.');
+        throw new Error('Apenas administradores podem editar Ingressos.');
     }
     try {
         return await Ingresso.findByIdAndUpdate(id, data, { new: true });
@@ -48,7 +48,10 @@ const updateIngresso = async (id, data, userTipo) => {
     }
 };
 
-const deleteIngresso = async (id) => {
+const deleteIngresso = async (id, userTipo) => {
+    if (userTipo !== 'admin') {
+        throw new Error('Apenas administradores podem deletar Ingressos.');
+    }
     try {
         return await Ingresso.findByIdAndDelete(id);
     } catch (error) {

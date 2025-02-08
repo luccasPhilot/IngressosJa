@@ -46,7 +46,7 @@ const updateIngresso = async (req, res) => {
 
 const deleteIngresso = async (req, res) => {
     try {
-        const ingresso = await ingressoService.deleteIngresso(req.params.id);
+        const ingresso = await ingressoService.deleteIngresso(req.params.id, req.userTipo);
 
         if (!ingresso) {
             return res.status(404).json({ message: "Ingresso não encontrado" });
