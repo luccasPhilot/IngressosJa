@@ -11,7 +11,7 @@ const realizarVenda = async (req, res) => {
 
 const getVendas = async (req, res) => {
     try {
-        const vendas = await vendaService.getVendas();
+        const vendas = await vendaService.getVendas(req.userTipo);
         res.status(201).json(vendas);
     } catch (error) {
         res.status(400).json({ message: error.message });

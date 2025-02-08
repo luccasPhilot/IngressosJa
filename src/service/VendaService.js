@@ -38,7 +38,10 @@ const processarVenda = async (ingressos, username) => {
     return venda;
 };
 
-const getVendas = async () => {
+const getVendas = async (userTipo) => {
+    if (userTipo !== 'admin') {
+        throw new Error('Apenas administradores podem visualizar compras que não são suas.');
+    }
     try {
         return await Venda.find()
     } catch {
