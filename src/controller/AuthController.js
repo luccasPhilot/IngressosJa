@@ -19,6 +19,14 @@ const login = async (req, res) => {
   }
 };
 
+const token = async (req, res) => {
+  const { authorization } = req.headers;
+  const parts = authorization.split(" "); 
+  const [schema, token] = parts;
+  return res.status(200).json({ token });
+};
+
 module.exports = {
   login,
+  token
 }
