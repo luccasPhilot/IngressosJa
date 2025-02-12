@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-    </head>
-    <body>    
-        <h2>HELLO</h2>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresso - {{nome}}</title>
+    <link rel="stylesheet" href="/css/ingresso.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Ingresso</h3> <!-- Mini título -->
+        <h2>{{nome}}</h2> <!-- Nome do evento -->
+        <p><strong>Preço do Ingresso:</strong> R$ {{preco}},00</p>
+        <button onclick="window.history.back()">Voltar</button>
+    </div>
+</body>
 </html>

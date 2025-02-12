@@ -29,6 +29,14 @@ const getIngressoById = async (id) => {
     }
 }
 
+const getIngressoByUsername = async (nome) => {
+    try {
+        return await Ingresso.findOne({ nome: nome });
+    } catch {
+        throw new Error("Erro ao buscar Ingresso: " + error.message);
+    }
+}
+
 const getIngressoByNome = async (nome) => {
     try {
         return await Ingresso.findOne({ nome: nome });
@@ -65,5 +73,6 @@ module.exports = {
     getIngressoById,
     updateIngresso,
     deleteIngresso,
-    getIngressoByNome
+    getIngressoByNome,
+    getIngressoByUsername,
 };

@@ -6,6 +6,7 @@ const router = express.Router();
 router.post('/', auth.authMiddleware, IngressoController.createIngresso);
 router.get('/', auth.authMiddleware, IngressoController.getIngressos);
 router.get('/:id', auth.authMiddleware, IngressoController.getIngressoById);
+router.get('/Nome/:nome', auth.authMiddleware, IngressoController.getIngressoByUsername);
 router.patch("/:id", auth.authMiddleware, IngressoController.updateIngresso);
 router.delete("/:id", auth.authMiddleware, IngressoController.deleteIngresso);
 

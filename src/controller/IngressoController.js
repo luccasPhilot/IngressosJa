@@ -30,6 +30,19 @@ const getIngressoById = async (req, res) => {
     }
 }
 
+const getIngressoByUsername = async (req, res) => {
+    try {
+        console.log(req.params.nome)
+        const ingresso = await ingressoService.getIngressoByUsername(req.params.nome);
+
+        if(!ingresso) return res.status(404).json({ message: "Ingresso não encontrado"})
+
+        res.status(201).json(ingresso);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
+
 const updateIngresso = async (req, res) => {
     try {
         const ingresso = await ingressoService.updateIngresso(req.params.id, req.body, req.userTipo);
@@ -64,4 +77,5 @@ module.exports = {
     getIngressoById, 
     updateIngresso, 
     deleteIngresso,
+    getIngressoByUsername,
 };
