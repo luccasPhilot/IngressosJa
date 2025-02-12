@@ -20,11 +20,7 @@ const processarVenda = async (ingressos, username) => {
         ingresso.qtd -= item.qtd;
         ingressosAtualizados.push(ingresso);
         total += ingresso.preco * item.qtd;
-
-        console.log(ingressosAtualizados);
     }
-
-    console.log(ingressosAtualizados);
 
     await Promise.all(ingressosAtualizados.map((ingresso) => ingresso.save()));
 
@@ -49,7 +45,16 @@ const getVendas = async (userTipo) => {
     }
 }
 
+const getVendasUsuario = async (user, userTipo) => {
+    try {
+        return await Venda.find({ username: user })
+    } catch {
+        throw new Error("Erro ao buscar Vendas: " + error.message);
+    }
+}
+
 module.exports = {
     processarVenda,
-    getVendas
+    getVendas,
+    getVendasUsuario,
 }

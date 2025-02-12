@@ -18,7 +18,17 @@ const getVendas = async (req, res) => {
     }
 }
 
+const getVendasUsuario = async (req, res) => {
+    try {
+        const vendas = await vendaService.getVendasUsuario(req.userId, req.userTipo);
+        res.status(201).json(vendas);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
+
 module.exports = {
     realizarVenda,
-    getVendas
+    getVendas,
+    getVendasUsuario
 }

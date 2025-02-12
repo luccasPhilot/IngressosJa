@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
-    "dev2": "nodemon -e mustache,js,html,css app.js"
+    "start": "nodemon -e mustache,js,html,css app.js"
   },
   "keywords": [],
   "author": "",
