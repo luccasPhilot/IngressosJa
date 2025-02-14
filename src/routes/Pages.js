@@ -1,7 +1,6 @@
 const express = require("express");
 const ingressoService = require("../service/IngressoService");
 
-
 const router = express.Router();
 
 router.get("/", (req, res) => {
